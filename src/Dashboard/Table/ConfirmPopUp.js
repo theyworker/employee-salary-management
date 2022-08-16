@@ -1,5 +1,5 @@
 import React from 'react';
-import { message, Popconfirm } from 'antd';
+import { Popconfirm } from 'antd';
 
 const ConfirmPopUp = ({title, confirm, cancel, text}) =>  (
     <Popconfirm

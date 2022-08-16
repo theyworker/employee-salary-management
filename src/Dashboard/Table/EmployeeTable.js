@@ -1,8 +1,8 @@
 import React from "react";
 import { Table, Space } from "antd";
 import ConfirmPopUp from "./ConfirmPopUp";
-
 import { useNavigate } from "react-router-dom";
+import EditModal from "../Edit/EditModal";
 
 const EmployeeTable = ({ data }) => {
   let navigate = useNavigate();
@@ -45,6 +45,7 @@ const EmployeeTable = ({ data }) => {
           />
         </Space>
       ),
+
     },
   ];
 
@@ -57,6 +58,7 @@ const EmployeeTable = ({ data }) => {
         responsive
         loading={data.length == 0}
       />
+      <EditModal/>
     </div>
   );
 };
