@@ -1,43 +1,49 @@
 import React from "react";
-import { Table } from "antd";
-
-const dataSource = [
-  {
-    key: "1",
-    name: "Mike",
-    age: 32,
-    address: "10 Downing Street",
-  },
-  {
-    key: "2",
-    name: "John",
-    age: 42,
-    address: "10 Downing Street",
-  },
-];
+import { Table, Space } from "antd";
 
 const columns = [
   {
+    title: "ID",
+    dataIndex: "id",
+    key: "id",
+  },
+  {
     title: "Name",
-    dataIndex: "name",
-    key: "name",
+    dataIndex: "fullName",
+    key: "fullName",
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: "User Name",
+    dataIndex: "userName",
+    key: "userName",
   },
   {
-    title: "Address",
-    dataIndex: "address",
-    key: "address",
+    title: "Salary",
+    dataIndex: "salary",
+    key: "salary",
+  },
+  {
+    title: "Action",
+    key: "action",
+    render: (_, record) => (
+      <Space size="middle">
+        <a onClick={() => console.log(record.userName)}>Edit</a>
+        <a>Delete</a>
+      </Space>
+    ),
   },
 ];
 
-const EmployeeTable = () => {
+const EmployeeTable = ({ data }) => {
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} pagination={{ pageSize: 5 }} />
+      <Table
+        dataSource={data}
+        columns={columns}
+        pagination={{ pageSize: 5 }}
+        responsive
+        loading={data.length == 0 }
+      />
     </div>
   );
 };
