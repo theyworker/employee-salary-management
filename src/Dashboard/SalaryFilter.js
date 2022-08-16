@@ -1,29 +1,40 @@
 import React from "react";
 import { Space, Slider, InputNumber } from "antd";
 
-const SalaryFilter = () => {
+const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
+  let { min : selectedMin, max  : selectedMax} = selectedRange;
+  
+  const changeValues = (newValues) => {
+    let [newMin, newMax] = newValues;
+    setSelectedRange({min: newMin , max:newMax})
+  }
+
+  const changeMin = (newMin) => setSelectedRange({min: newMin, max: selectedMax})
+  const changeMax = (newMax) => setSelectedRange({min: selectedMin, max: newMax})
   return (
     <div>
       <Slider
-        defaultValue={[20, 30]}
+
         range
         disabled={false}
-        min={10}
-        max={100}
+        min={min}
+        max={max}
+        value={[selectedMin, selectedMax]}
+        onChange={changeValues}
       />
       <InputNumber
-        min={1}
-        max={20}
+        min={min}
+        max={max}
         style={{ margin: "0 16px" }}
-        value={0}
-        onChange={() => {}}
+        value={selectedMin}
+        onChange={changeMin}
       />
       <InputNumber
-        min={1}
-        max={20}
+        min={min}
+        max={max}
         style={{ margin: "0 16px" }}
-        value={0}
-        onChange={() => {}}
+        value={selectedMax}
+        onChange={changeMax}
       />
     </div>
   );
