@@ -1,9 +1,9 @@
-import "./App.css";
 import "antd/dist/antd.min.css";
 import { Dashboard } from "./Dashboard/Dashboard";
 import { Layout } from "antd";
 import useMobile from "./customHook/useMobile";
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 const { Header, Footer, Sider, Content } = Layout;
 function App() {
@@ -15,7 +15,9 @@ function App() {
         <Layout>
           <Header>Header</Header>
           <Content>
-            <Dashboard />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+            </Routes>
           </Content>
           <Footer>Footer</Footer>
         </Layout>
