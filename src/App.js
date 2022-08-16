@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import useMobile from "./customHook/useMobile";
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import Delete from "./Dashboard/Sucess/Delete";
 
 const { Header, Footer, Sider, Content } = Layout;
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Content>
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/delete/:id" element={<Delete />} />
             </Routes>
           </Content>
           <Footer>Footer</Footer>
