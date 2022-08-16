@@ -20,10 +20,9 @@ export const Dashboard = () => {
     }
   }, [empData]);
 
-  const filteredData = () =>
-    empData.filter(
-      (emp) => emp.salary > selectedRange.min && emp.salary < selectedRange.max
-    );
+  const filteredData = empData.filter(
+    (emp) => emp.salary >= selectedRange.min && emp.salary <= selectedRange.max
+  );
   return (
     <div size={"large"}>
       <SalaryFilter
@@ -32,7 +31,7 @@ export const Dashboard = () => {
         min={findMin()}
         max={findMax()}
       />
-      <EmployeeTable data={filteredData()} />
+      <EmployeeTable data={filteredData} />
     </div>
   );
 };

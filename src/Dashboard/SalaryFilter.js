@@ -2,6 +2,7 @@ import React from "react";
 import { Space, Slider, InputNumber } from "antd";
 
 const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
+
   let { min : selectedMin, max  : selectedMax} = selectedRange;
   
   const changeValues = (newValues) => {
@@ -14,7 +15,6 @@ const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
   return (
     <div>
       <Slider
-
         range
         disabled={false}
         min={min}
