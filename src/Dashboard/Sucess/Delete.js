@@ -3,10 +3,13 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../const/static";
 import SpinFC from "antd/lib/spin";
+import { Result , Button} from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Delete = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios.delete(`${baseUrl}/${id}`).then((res) => {
@@ -18,7 +21,20 @@ const Delete = () => {
   return (
     <div>
       Deleting {id}
-      {loading ? <SpinFC size="large" /> : <React.Fragment />}
+      {loading ? (
+        <SpinFC size="large" />
+      ) : (
+        <Result
+          status="info"
+          title="Successfully Deleted!"
+          extra={[
+            <Button type="primary" key="console" onClick={()=> navigate(`../`, { replace: true })}>
+              Go Console
+            </Button>
+            
+          ]}
+        />
+      )}
     </div>
   );
 };
