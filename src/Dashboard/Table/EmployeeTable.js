@@ -6,6 +6,8 @@ import EditModal from "../Edit/EditModal";
 
 const EmployeeTable = ({ data }) => {
   let navigate = useNavigate();
+
+
   const columns = [
     {
       title: "ID",
@@ -35,7 +37,7 @@ const EmployeeTable = ({ data }) => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a onClick={() => console.log(record.userName)}>Edit</a>
+          <EditModal data={record}/>
           <ConfirmPopUp
             text="Delete"
             title="Are you sure?"
@@ -45,7 +47,6 @@ const EmployeeTable = ({ data }) => {
           />
         </Space>
       ),
-
     },
   ];
 
@@ -58,7 +59,6 @@ const EmployeeTable = ({ data }) => {
         responsive
         loading={data.length == 0}
       />
-      <EditModal/>
     </div>
   );
 };

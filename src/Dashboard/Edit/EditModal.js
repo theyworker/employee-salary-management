@@ -1,21 +1,28 @@
-import React from "react";
-import { Button, Checkbox, Form, Input ,Modal} from 'antd';
+import React, { useState } from "react";
+import { Button, Checkbox, Form, Input, Modal } from "antd";
 import EditForm from "./EditFrom";
 
-const EditModal = ({ modalText, handleOk, confirmLoading, handleCancel,onFinish, onFinishFailed }) => {
+const EditModal = ({ handleOk, data }) => {
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  const openEditModal = () => setShowEditModal(true);
+  const closeEditModal = () => setShowEditModal(false);
+
+  const handleCancel = () => {
+    closeEditModal();
+  };
   return (
     <div>
+      <a onClick={() => openEditModal()}>Edit</a>
       <Modal
         title="Edit"
-        visible={true}
+        visible={showEditModal}
         onOk={handleOk}
-        confirmLoading={confirmLoading}
         onCancel={handleCancel}
         footer={false}
+        
       >
-        <p>{modalText}</p>
-
-      <EditForm/>
+        <EditForm data={data}/>
       </Modal>
     </div>
   );
