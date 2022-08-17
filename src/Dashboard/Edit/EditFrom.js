@@ -1,39 +1,73 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, Modal } from "antd";
+import { Button, Checkbox, Form, Input, Modal, message } from "antd";
+import { baseUrl } from "../../const/static";
+import axios from "axios";
 
-const EditForm = ({ data, onFinish, onFinishFailed }) => {
+const EditForm = ({ data ,closeEditModal}) => {
   console.log(data);
   let { fullName, id, salary, userName } = data;
-  const [fullNameValue, setFullNameValue] = useState(fullName);
-  const [userNameValue, setUserNameValue] = useState(userName);
-  const [salaryValue, setSalaryValue] = useState(salary);
 
+  const isDiff = (newFormValues) => {
+    let {
+      fullName: newFullName,
+      salary: nwewSalary,
+      userName: newUserName,
+    } = newFormValues;
+
+    return (
+      fullName != newFullName || userName != newUserName || salary != nwewSalary
+    );
+  };
+  const onFinish = async (val) => {
+    if (isDiff(val)) {
+      let {
+        fullName: newFullName,
+        salary: nwewSalary,
+        userName: newUserName,
+      } = val;
+      axios
+        .put(`${baseUrl}/${id}`, {
+          fullName: newFullName,
+          salary: nwewSalary,
+          userName: newUserName,
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            message.info('Employee Details were updated')
+            closeEditModal()
+          }
+        });
+    }
+  };
   return (
     <Form
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
-      // initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
       initialValues={{
-        fullName: fullNameValue,
-        username: userNameValue,
-        salary: salaryValue,
+        fullName: fullName,
+        userName: userName,
+        salary: salary,
       }}
     >
       <Form.Item
         label="Full Name"
         name="fullName"
-        rules={[{ required: true, message: "Please input your Full Name!" }]}
+        rules={[
+          {
+            required: true,
+            message: "Please input your Full Name!",
+          },
+        ]}
       >
         <Input />
       </Form.Item>
 
       <Form.Item
         label="Login"
-        name="username"
+        name="userName"
         rules={[{ required: true, message: "Please input your Login!" }]}
       >
         <Input />
@@ -43,7 +77,7 @@ const EditForm = ({ data, onFinish, onFinishFailed }) => {
         name="salary"
         rules={[{ required: true, message: "Please input your Salary!" }]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

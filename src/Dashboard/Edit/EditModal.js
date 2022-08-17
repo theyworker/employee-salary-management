@@ -22,7 +22,7 @@ const EditModal = ({ handleOk, data }) => {
         footer={false}
         
       >
-        <EditForm data={data}/>
+        <EditForm data={data} closeEditModal={closeEditModal}/>
       </Modal>
     </div>
   );
