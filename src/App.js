@@ -5,6 +5,8 @@ import useMobile from "./customHook/useMobile";
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Delete from "./Dashboard/Sucess/Delete";
+import UserUpload from "./Dashboard/UserUpload/UserUpload";
+
 
 const { Header, Footer, Sider, Content } = Layout;
 function App() {
@@ -19,6 +21,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/delete/:id" element={<Delete />} />
+              <Route path="/upload" element={<UserUpload />} />
             </Routes>
           </Content>
           <Footer>Footer</Footer>
