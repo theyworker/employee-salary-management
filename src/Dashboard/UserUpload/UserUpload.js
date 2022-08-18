@@ -36,7 +36,6 @@ const UserUpload = () => {
       }
     });
 
-    console.log("isValid", valid);
     return valid;
   };
 
@@ -49,6 +48,7 @@ const UserUpload = () => {
       }
       else{
        axios.post(baseUrl,{...newEmp})
+    //    the mockapi platform; has a major limitation in concurrent posting. 
       }
     });
 
