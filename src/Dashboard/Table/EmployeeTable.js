@@ -10,15 +10,9 @@ const EmployeeTable = ({ data }) => {
 
   const columns = [
     {
-      title: "ID",
-      dataIndex: "id",
-      key: "id",
-      sorter: (a, b) => a.id - b.id,
-    },{
       title: "Emp ID",
       dataIndex: "empID",
       key: "empID",
-      sorter: (a, b) => a.empID - b.empID,
     },
     {
       title: "Name",

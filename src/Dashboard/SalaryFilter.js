@@ -13,7 +13,8 @@ const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
   const changeMin = (newMin) => setSelectedRange({min: newMin, max: selectedMax})
   const changeMax = (newMax) => setSelectedRange({min: selectedMin, max: newMax})
   return (
-    <div>
+    <div style={{padding: '2em'}}>
+      <h4>Salary Filter</h4>
       <Slider
         range
         disabled={false}
@@ -21,7 +22,9 @@ const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
         max={max}
         value={[selectedMin, selectedMax]}
         onChange={changeValues}
+        style={{ margin: '2em 5em'}}
       />
+      Min
       <InputNumber
         min={min}
         max={max}
@@ -29,6 +32,7 @@ const SalaryFilter = ({ min, max, selectedRange,setSelectedRange }) => {
         value={selectedMin}
         onChange={changeMin}
       />
+      Max
       <InputNumber
         min={min}
         max={max}
