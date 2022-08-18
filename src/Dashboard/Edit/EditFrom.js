@@ -4,7 +4,7 @@ import { baseUrl } from "../../const/static";
 import axios from "axios";
 
 const EditForm = ({ data ,closeEditModal}) => {
-  console.log(data);
+
   let { fullName, id, salary, userName } = data;
 
   const isDiff = (newFormValues) => {

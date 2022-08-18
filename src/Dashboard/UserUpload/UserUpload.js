@@ -11,6 +11,7 @@ const UserUpload = () => {
   }, []);
 
   const extractCSVdata = (rows) => {
+    // elimination comments
     let commentsRemoved = rows.filter((row) => !/#.+/.test(row));
     let data = commentsRemoved.map((row) => {
       let [empID, userName, fullName, salary] = row.split(",");
@@ -29,7 +30,6 @@ const UserUpload = () => {
         empData.find(
           (emp) => emp.userName == row.userName && emp.empID != row.empID
         ) || false;
-      console.log(row.fullName, isExisting);
       if (isExisting) {
         valid = false;
         return;
@@ -38,6 +38,7 @@ const UserUpload = () => {
 
     return valid;
   };
+
 
   const updateEmpData = async (rows) => {
     let extractedData = extractCSVdata(rows);
@@ -64,7 +65,7 @@ const UserUpload = () => {
           const reader = new FileReader();
 
           reader.onload = (e) => {
-            console.log(e.target.result);
+
             let trimmedCSV = e.target.result.trim().split("\r\n");
 
             if (checkTransactionValidity(trimmedCSV)) {
