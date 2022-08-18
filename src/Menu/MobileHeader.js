@@ -18,7 +18,7 @@ const MobileHeader = () => {
     <div>
       <MenuOutlined style={{ color: "#fff" }} onClick={()=>showDrawer(true)}/>
       <Drawer
-        title="Basic Drawer"
+        title="Menu"
         placement="right"
         onClose={onClose}
         visible={visible}
