@@ -57,7 +57,8 @@ const UserUpload = () => {
   };
 
   return (
-    <div>
+    <div style={{textAlign : 'center', padding: '2em'}}>
+        <p>Upload a CSV file</p>
       <Upload
         accept=".csv"
         showUploadList={false}

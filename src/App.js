@@ -6,6 +6,8 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Delete from "./Dashboard/Sucess/Delete";
 import UserUpload from "./Dashboard/UserUpload/UserUpload";
+import Menu from "./Menu/Menu";
+import MobileHeader from "./Menu/MobileHeader";
 
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -13,10 +15,16 @@ function App() {
   const isMobile = useMobile();
   return (
     <div className="App">
-      <Layout>
-        {isMobile ? <React.Fragment /> : <Sider>Sider</Sider>}
+      <Layout style={{width:'100vw', height:'100vh'}}>
+        {isMobile ? (
+          <React.Fragment />
+        ) : (
+          <Sider>
+            <Menu />
+          </Sider>
+        )}
         <Layout>
-          <Header>Header</Header>
+         {isMobile? <Header><MobileHeader/></Header> : <React.Fragment/>}
           <Content>
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -24,7 +32,6 @@ function App() {
               <Route path="/upload" element={<UserUpload />} />
             </Routes>
           </Content>
-          <Footer>Footer</Footer>
         </Layout>
       </Layout>
     </div>
