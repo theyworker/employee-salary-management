@@ -5,3 +5,5 @@
 3. npm start
 
 The webapp is integrated to MockAPI - https://62fbb248abd610251c0f4eed.mockapi.io/employee
+
+For CSV file upload, use CSV_File/test3.csv
