@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Modal } from "antd";
 import EditForm from "./EditFrom";
+import { EditOutlined } from "@ant-design/icons";
 
 const EditModal = ({ handleOk, data }) => {
   const [showEditModal, setShowEditModal] = useState(false);
@@ -13,7 +14,7 @@ const EditModal = ({ handleOk, data }) => {
   };
   return (
     <div>
-      <a onClick={() => openEditModal()}>Edit</a>
+      <a onClick={() => openEditModal()}><EditOutlined /></a>
       <Modal
         title="Edit"
         visible={showEditModal}

@@ -38,7 +38,6 @@ const EmployeeTable = ({ data }) => {
         <Space size="middle">
           <EditModal data={record}/>
           <ConfirmPopUp
-            text="Delete"
             title="Are you sure?"
             confirm={() =>
               navigate(`../delete/${record.id}`, { replace: true })

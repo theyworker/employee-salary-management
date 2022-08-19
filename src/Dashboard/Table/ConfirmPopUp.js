@@ -1,7 +1,8 @@
 import React from 'react';
 import { Popconfirm } from 'antd';
+import { DeleteOutlined } from "@ant-design/icons";
 
-const ConfirmPopUp = ({title, confirm, cancel, text}) =>  (
+const ConfirmPopUp = ({title, confirm, cancel}) =>  (
     <Popconfirm
       title={title}
       onConfirm={confirm}
@@ -9,7 +10,7 @@ const ConfirmPopUp = ({title, confirm, cancel, text}) =>  (
       okText="Yes"
       cancelText="No"
     >
-      <a href="#">{text}</a>
+      <a href="#" ><DeleteOutlined /></a>
     </Popconfirm>
   );
 
